@@ -3,3 +3,4 @@ for i in range(1, 101):
         continue  # переходим на следующую итерацию
     print(i)
     n=int
+    help
