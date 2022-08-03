@@ -123,3 +123,5 @@
 #
 #
 # generates_a_password(pwd_quantity, pwd_len)
+if __name__ == '__main__':
+    print('x')
