@@ -85,7 +85,7 @@
 #     def get_email(self):
 #         return self.__email
 #     def set_email(self,value):
-#         if value.count('@')==1 and '.' in value[value.find('@'):] and isinstance(value,str):
+#         if value.count('@')==1 find and isinstance(value,str):
 #             self.__email=value
 #         else:
 #             print(f'ErrorMail:{value}')

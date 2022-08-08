@@ -106,37 +106,124 @@
 
 from string import digits
 
+# class User:
+#     def __init__(self, login, password):
+#         self.login = login
+#         self.password = password
+#         self.__secret='Sai Baba'
+#
+#     @property
+#     def secret(self):
+#         s = input('Введите Ваш пароль: ')
+#         if s == self.password:
+#             return self.__secret
+#         else:
+#             raise ValueError('Ввели не верный пароль')
+#     @staticmethod
+#     def is_include_number(new_value):
+#         for digit in digits:
+#             if digit in new_value:
+#                 return True
+#         return False
+#
+#     @property
+#     def password(self):
+#         print('getter called')
+#         return self.__password
+#
+#     @password.setter
+#     def password(self, value):
+#         print('setter called')
+#         if not isinstance(value, str):
+#             raise TypeError('Пароль должен быть строкой')
+#         if len(value) < 4:
+#             raise ValueError('Len<4')
+#         if not User.is_include_number(value):
+#             raise ValueError('Пароль должен содержать цифру')
+#         self.__password = value
+#
+# s = User('df', '456ghgj433')
+# print(s.password)
+# s.password = 'nbhjhb8j'
+# print(s.password)
+# print(s.secret)
 
-class User:
+from string import digits
+from string import ascii_letters
+
+
+class Registration:
     def __init__(self, login, password):
         self.login = login
-        self.__password = password
+        self.password = password
 
-    @staticmethod
-    def is_include_number(password):
-        for digit in digits:
-            if digit in password:
-                return True
-        return False
+    @property
+    def login(self):
+        return self.__login
+
+    @login.setter
+    def login(self, value):
+        if '@' not in value:
+            raise ValueError("Логин должен содержать один символ '@'")
+        if not '.' in value[value.find('@'):]:
+            raise ValueError("Логин должен содержать символ '.'")
+        else:
+            self.__login = value
 
     @property
     def password(self):
-        print('getter called')
         return self.__password
+
+    @staticmethod
+    def is_include_number(new_value):
+        for digit in digits:
+            if digit in new_value:
+                return True
+        return False
+
+    @staticmethod
+    def is_include_all_register(new_value):
+        count = 0
+        for i in new_value:
+            if i.isupper():
+                count += 1
+            if i.islower:
+                count += 1
+        if count > 2:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def is_include_only_latin(new_value):
+        for i in ascii_letters:
+            if i in new_value:
+                return True
+        return False
+    @staticmethod
+    def check_password_dictionary(value):
+        for i in 'easy_passwords.txt':
+            if i in value:
+                return False
+            else:
+                return True
 
     @password.setter
     def password(self, value):
-        print('setter called')
         if not isinstance(value, str):
-            raise TypeError('Пароль должен быть строкой')
-        if len(value) < 4:
-            raise ValueError('Len<4')
-        if not User.is_include_number(value):
-            raise ValueError('Пароль должен содержать цифру')
+            raise TypeError("Пароль должен быть строкой")
+        if not 5 <= len(value) <= 11:
+            raise ValueError('Пароль должен быть длиннее 4 и меньше 12 символов')
+        if not Registration.is_include_number(value):
+            raise ValueError('Пароль должен содержать хотя бы одну цифру')
+        if not Registration.is_include_all_register(value):
+            raise ValueError('Пароль должен содержать хотя бы один символ верхнего и нижнего регистра')
+        if not Registration.is_include_only_latin(value):
+            raise ValueError('Пароль должен содержать только латинский алфавит')
+        if not Registration.check_password_dictionary(value):
+            raise ValueError('Ваш пароль содержится в списке самых легких')
         self.__password = value
 
 
-s = User('df', 34)
-print(s.password)
-s.password = 'nbhjhb8j'
-print(s.password)
+r1 = Registration('qwerty@rambler.ru', 'zaq12wsx')  # здесь хороший логин
+print(r1.login, r1.password)  # qwerty@rambler.ru QwrRt124

@@ -1,0 +1,60 @@
+# class Lion:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f'The object Lion {self.name}'
+#
+#
+# simba = Lion('simba')
+# print(simba.name)
+
+# class Person:
+#     def __init__(self, name, surname, gender='male'):
+#         self.name = name
+#         self.surname = surname
+#         if gender == 'male' or gender == 'female':
+#             self.gender = gender
+#         else:
+#             print(f'?? ????, ??? ?? ????? ?????? ????? ??? ????? ???????!')
+#             self.gender='male'
+#
+#     def __str__(self):
+#         if self.gender == 'male':
+#             return f'????????? {self.surname} {self.name}'
+#         if self.gender == 'female':
+#             return f'????????? {self.surname} {self.name}'
+#
+#
+# p1 = Person('Chuck', 'Norris')
+# print(p1) # ???????? "????????? Norris Chuck"
+# p2 = Person('Mila', 'Kunis', 'female')
+# print(p2) # ???????? "????????? Kunis Mila"
+# p3 = Person('???-???', '??????', True)# ???????? "?? ????, ??? ?? ????? ?????? ????? ??? ????? ???????!"
+# print(p3) # ???????? "????????? ?????? ???-???"
+
+# class Vector:
+#     def __init__(self,*args):
+#         self.args=args
+#         self.values = sorted(list(filter(lambda x: isinstance(x, int), args)))
+#     def __repr__(self):
+#         if len(self.values) >0:
+#             return f'Вектор{tuple(self.values)}'
+#         else:
+#             return f'Пустой вектор'
+
+class Vector:
+    def __init__(self, *args):
+        self.values = [i for i in args if type(i) == int]
+
+    def __repr__(self):
+        return self.values
+
+    def __str__(self):
+        return f'Вектор{tuple(sorted(self.values))}' if self.values != [] else 'Пустой вектор'
+
+
+v1 = Vector(1,2,3)
+print(v1) # печатает "Вектор(1, 2, 3)"
+v2 = Vector()
+print(v2) # печатает "Пустой вектор"
