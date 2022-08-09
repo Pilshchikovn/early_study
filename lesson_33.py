@@ -30,20 +30,22 @@ class File:
 
 
 class Trash:
-    content = []
 
+    content = []
     @staticmethod
     def add(file):
         if isinstance(file, File):
             Trash.content.append(file)
-            File.in_trash = True
+            file.in_trash = True
         else:
             print(f'В корзину добавлять можно только файл')
 
     @staticmethod
     def clear():
         print('Очищаем корзину')
-        Trash.content.clear()
+        for i in Trash.content:
+            File.remove(i)
+        Trash.content=[]
         print('Корзина пуста')
 
     @staticmethod
@@ -56,14 +58,15 @@ class Trash:
 f1 = File('puppies.jpg')
 f2 = File('cat.jpg')
 passwords = File('pass.txt')
-
-f1.read()  # Прочитали все содержимое файла puppies.jpg
+passwordss = File('passsssssssssss.txxxxxxxxxxxxt')
+f1.read() # Прочитали все содержимое файла puppies.jpg
 Trash.add(f1)
-f1.read()  # ErrorReadFileTrashed(puppies.jpg)
+f1.read() # ErrorReadFileTrashed(puppies.jpg)
 
 Trash.add(f2)
 Trash.add(passwords)
-Trash.clear()  # после этой команды вывод должен быть таким
+Trash.add(passwordss)
+Trash.clear() # после этой команды вывод должен быть таким
 '''
 Очищаем корзину
 Файл puppies.jpg был удален
@@ -71,4 +74,5 @@ Trash.clear()  # после этой команды вывод должен бы
 Файл pass.txt был удален
 Корзина пуста
 '''
-f1.read()  # ErrorReadFileTrashed(puppies.jpg)
+
+f1.read() # ErrorReadFileTrashed(puppies.jpg)
