@@ -53,6 +53,7 @@ class Trash:
         print('Восстанавливаем файлы из корзины')
         for i in Trash.content:
             File.restore_from_trash(i)
+        Trash.content = []
         print('Корзина пуста')
 
 f1 = File('puppies.jpg')
@@ -65,7 +66,6 @@ f1.read() # ErrorReadFileTrashed(puppies.jpg)
 
 Trash.add(f2)
 Trash.add(passwords)
-Trash.add(passwordss)
 Trash.clear() # после этой команды вывод должен быть таким
 '''
 Очищаем корзину

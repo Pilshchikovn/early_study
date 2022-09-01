@@ -152,10 +152,3 @@ q2 = Quadrilateral(3, 5)
 print(q2)  # печатает "Прямоугольник размером 3х5"
 print(q2 == True)  # печатает "False"
 
-# @staticmethod
-# def clear():
-#     print('Очищаем корзину')
-#     for i in Trash.content:
-#         File.remove(i)
-#     Trash.content = []
-#     print('Корзина пуста')
