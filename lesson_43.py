@@ -1,5 +1,4 @@
-x = {key: key * 2 for key in range(16)}
-print(x)
-
-# dict = {key: value * 2 for key, value in range(16)}
-# print(dict)
+import my_package
+import pprint
+print(my_package.python.X)
+print(my_package.java.Y)

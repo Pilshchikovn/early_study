@@ -1,3 +1,5 @@
+import pprint
+
 class Rectangle:
     __slots__ = '__width', 'height'
 
@@ -18,4 +20,5 @@ class Rectangle:
         self.__width = value
 
 s =Rectangle(5,3)
-print(s)
+
+

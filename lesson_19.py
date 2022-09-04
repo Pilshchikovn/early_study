@@ -1,127 +1,66 @@
-# import random
+# from fractions import Fraction as F
 #
-# num1 = random.randint(0, 17)
-# num2 = random.randint(-5, 5)
+# numbers = ['6.34', '4.08', '3.04', '7.49', '4.45', '5.39', '7.82', '2.76', '0.71', '1.97', '2.54', '3.67', '0.14',
+#            '4.29', '1.84', '4.07', '7.26', '9.37', '8.11', '4.30', '7.16', '2.46', '1.27', '0.29', '5.12', '4.02',
+#            '6.95', '1.62', '2.26', '0.45', '6.91', '7.39', '0.52', '1.88', '8.38', '0.75', '0.32', '4.81', '3.31',
+#            '4.63', '7.84', '2.25', '1.10', '3.35', '2.05', '7.87', '2.40', '1.20', '2.58', '2.46']
 #
-# print(num1)
-# print(num2)
+# for num in numbers:
+#     print(f"{num} = {F(num)}")
+#
+# from fractions import Fraction
+#
+# s = '0.78 4.3 9.6 3.88 7.08 5.88 0.23 4.65 2.79 0.90 4.23 2.15 3.24 8.57 0.10 8.57 1.49 5.64 3.63 8.36 1.56 6.67 1.46 5.26 4.83 7.13 1.22 1.02 7.82 9.97 5.40 9.79 9.82 2.78 2.96 0.07 1.72 7.24 7.84 9.23 1.71 6.24 5.78 5.37 0.03 9.60 8.86 2.73 5.83 6.50 0.123 0.00021'
+#
+# s = str(s).split()
+# print(Fraction(min(s)) + Fraction(max(s)))
 
-# import random
+# from fractions import Fraction
 #
-# for _ in range(10):
-#     print(random.randint(1, 100))
-# import random
+# a = int(input())
+# b = int(input())
 #
-# num = random.random()
-# print(num)
+# print(Fraction(a, b))
 
-# import random
-#
-# random.seed(17)   # явно устанавливаем начальное значение для генератора случайных чисел
-#
-# for _ in range(10):
-#     print(random.randint(1, 100))
+# from math import gcd
+# from fractions import Fraction
+# n = int(input())
+# result = []
+# while n != 1:
+#     for i in range(1, n):
+#         if gcd(i, n) == 1:
+#             result.append(f'{i}/{n}')
+#     n -= 1
+# answer = sorted(map(Fraction, result))
+# print(*answer, sep='\n')
 
+import turtle
+import turtle as t
 
-# import random
-#
-# again = 'д'
-# while again.lower() == 'д':
-#     print('Бросаем кубики... ')
-#     print('Значения граней:')
-#     print(random.randint(1, 6))
-#     print(random.randint(1, 6))
-#     again = input('Бросить кубики еще раз? (д = да, н = нет): ')
+t.colormode(255)
+t.bgcolor('black')
+t.speed(10)
+t.penup()
+t.shape('turtle')
+r = 0
+g = 0
+b = 255
+for i in range(1, 1000):
+    if 0 < i % 379 < 64:
+        r += 4
+    elif 63 < i % 379 < 127:
+        b -= 4
+    elif 126 < i % 379 < 190:
+        g += 4
+    elif 189 < i % 379 < 253:
+        r -= 4
+    elif 252 < i % 379 < 316:
+        b += 4
+    elif 315 < i % 379 < 379:
+        g -= 4
+    t.color((0, 0, 0), (r, g, b))
+    t.stamp()
+    t.left(22)
+    t.forward(1.01 ** i)
 
-# import random
-#
-# for _ in range(10):
-#     num = random.randint(0, 1)
-#     if num == 0:
-#         print('Орел')
-#     else:
-#         print('Решка')
-
-# import random
-#
-# numbers = [1, 2, 3, 4, 5, 6, 7, 8]
-# random.shuffle(numbers)
-# print(numbers)
-
-# import random
-#
-# print(random.choice('BEEGEEK'))
-# print(random.choice([1, 2, 3, 4]))
-# print(random.choice(['a', 'b', 'c', 'd']))
-
-# import random
-#
-# numbers = [2, 5, 8, 9, 12]
-#
-# print(random.sample(numbers, 1))
-# print(random.sample(numbers, 2))
-# print(random.sample(numbers, len(numbers)))
-
-#
-
-# from random import choice
-#
-# DIGITS = '0123456789'
-# LOWERCASE_LETTERS = 'abcdefghijklmnopqrstuvwxyz'
-# UPPERCASE_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-# PUNCTUATION = '!#$%&*+-=?@^_'
-#
-#
-# def check_user_numbers(num):  # проверка на ввод числа больше 1
-#
-#     if str(num).isdigit() and 1 <= int(num):
-#         return int(num)
-#     else:
-#         print('Введите чило от 1 до n')
-#         return check_user_numbers(input())
-#
-#
-# def check_user_value_text(text):  # проверка на правильность ввода слов Да или Нет.
-#
-#     if text.lower() == 'да':
-#         return True
-#     elif text.lower() == 'нет':
-#         return False
-#     else:
-#         print('Введите "Да" или "Нет"')
-#         return check_user_value_text(input())
-#
-#
-# pwd_quantity = check_user_numbers(input('Сколько паролей вам нужно сгенерировать? \n'))
-# pwd_len = check_user_numbers(input('Какой длины должен быть пароль? \n'))
-# pwd_digits = check_user_value_text(input('Включать ли в пароль цифры от 0 до 9? \n'))
-# pwd_uppercase = check_user_value_text(input('Включать ли в пароль прописные буквы? \n'))
-# pwd_lowercase = check_user_value_text(input('Включать ли в пароль строчные буквы? \n'))
-# pwd_punctuation = check_user_value_text(input('Включать ли в пароль символы "!#$%&*+-=?@^_"? \n'))
-# pwd_exceptions = check_user_value_text(input('Исключать ли неоднозначные символы "il1Lo0O"? \n'))
-#
-#
-# def generates_a_password(password_quantity, password_len):
-#     for _ in range(password_quantity):
-#         chars = ''
-#         for j in range(password_len):
-#             if len(chars) < password_len and pwd_digits:
-#                 chars += choice(DIGITS)
-#             if len(chars) < password_len and pwd_lowercase:
-#                 chars += choice(LOWERCASE_LETTERS)
-#             if len(chars) < password_len and pwd_uppercase:
-#                 chars += choice(UPPERCASE_LETTERS)
-#             if len(chars) < password_len and pwd_punctuation:
-#                 chars += choice(PUNCTUATION)
-#             if pwd_exceptions:
-#                 for c in 'il1Lo0O':
-#                     chars = chars.replace(c, '')
-#             elif not pwd_digits and not pwd_lowercase and not pwd_uppercase and not pwd_punctuation:
-#                 print('Вы отказались от всех настроек, попробуйте снова указать настройки')
-#                 return generates_a_password(pwd_quantity, pwd_len)
-#         print(chars)
-#
-#
-# generates_a_password(pwd_quantity, pwd_len)
-if __name__ == '__main__':
-    print('x')
+t.mainloop()
